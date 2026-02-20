@@ -231,8 +231,9 @@ export async function runCronIsolatedAgentTurn(params: {
       catalog: await loadCatalog(),
     });
   }
+  const xHighHint = formatXHighModelHint();
   if (thinkLevel === "xhigh" && !supportsXHighThinking(provider, model)) {
-    throw new Error(`Thinking level "xhigh" is only supported for ${formatXHighModelHint()}.`);
+    throw new Error(`Thinking level "xhigh" is only supported for ${xHighHint}.`);
   }
 
   const timeoutMs = resolveAgentTimeoutMs({
